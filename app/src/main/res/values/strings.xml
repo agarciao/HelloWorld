@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">HelloWorld</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="btnMainName">SALUDO!!!</string>
+    <string name="title_activity_destino">DestinoActivity</string>
+    <string name="destino">ACTIVIDAD DE DESTINO</string>
+    <string name="title_activity_resultado">ResultadoActivity</string>
+    <string name="title_activity_receiver">ReceiverActivity</string>
+    <string name="enviarDatos">Enviar Datos</string>
+    <string name="NewTarget">Nuevo destino / Lista</string>
+    <string name="result">Resultado</string>
+    <string name="recibiendoDatos">Recibiendo datos...</string>
+    <string name="title_activity_implicit">ImplicitActivity</string>
+    <string name="mensajeImplicita">Soy una actividad implicita</string>
+    <string name="title_activity_implicita2">Implicita2Activity</string>
+    <string name="mensajeImplicita2">Soy una actividad implicita 2</string>
+    <string name="llamar">Llamar</string>
+
+</resources>
