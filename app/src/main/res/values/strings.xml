@@ -17,5 +17,27 @@
     <string name="title_activity_implicita2">Implicita2Activity</string>
     <string name="mensajeImplicita2">Soy una actividad implicita 2</string>
     <string name="llamar">Llamar</string>
+    <string name="action_borrar">Borrar</string>
+    <string name="action_crear">Crear</string>
+    <string name="update_preference">ACTUALIZAR</string>
+    <string name="summary_preference">Esto el summary de la preferencia</string>
+    <string name="name_pref">Nombre pref</string>
+    <string name="preferences_color">Color preferido</string>
+    <string name="preferences_title">Escoger color</string>
 
+    <array name="color_values">
+        <item>FF0000</item>
+        <item>00FF00</item>
+        <item>0000FF</item>
+    </array>
+    <array name="color_entries">
+        <item>Rojo</item>
+        <item>Verde</item>
+        <item>Azul</item>
+    </array>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_preferencias">PreferenciasActivity</string>
+    <string name="preferencias">Preferencias</string>
 </resources>

@@ -2,15 +2,22 @@ package com.oesia.agarciao.helloworld;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DestinoActivity extends AppCompatActivity {
+
+    private List<Pelicula> list;
+    private PeliculaAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,33 +30,45 @@ public class DestinoActivity extends AppCompatActivity {
 //        listView.setAdapter(adapter);
 
         ListView listView = (ListView) findViewById(R.id.lvDestino);
-        List<Pelicula> list = new ArrayList<>();
+        list = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
-            list.add(new Pelicula("Pelicula "+i, "Año "+i, "Director "+i));
+            list.add(new Pelicula("Pelicula " + i, "Año " + i, "Director " + i));
         }
-        PeliculaAdapter adapter = new PeliculaAdapter(list, R.layout.pelicula_list_item, this);
+        adapter = new PeliculaAdapter(list, R.layout.pelicula_list_item, this);
         listView.setAdapter(adapter);
+
+        registerForContextMenu(listView);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_destino, menu);
-        return true;
-    }
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        int id = v.getId();
+        switch (id) {
+            case R.id.lvDestino:
+                AdapterView.AdapterContextMenuInfo contextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
+                menu.setHeaderTitle(list.get(contextMenuInfo.position).getTitulo());
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+                getMenuInflater().inflate(R.menu.lv_context_menu, menu);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_borrar_ctx_mn_lst_destino:
+                AdapterView.AdapterContextMenuInfo contextMenuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                adapter.borrarItem(contextMenuInfo.position);
+                Toast.makeText(this, "Borrando en posición: " + contextMenuInfo.position, Toast.LENGTH_LONG).show();
+                break;
+            case R.id.action_crear_ctx_mn_lst_destino:
+                AdapterView.AdapterContextMenuInfo contextMenuInfo2 = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                adapter.crearItem(contextMenuInfo2.position);
+                Toast.makeText(this, "Creando en posición: " + contextMenuInfo2.position, Toast.LENGTH_LONG).show();
+                break;
+        }
+        return super.onContextItemSelected(item);
     }
 }

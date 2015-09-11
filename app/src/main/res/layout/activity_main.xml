@@ -68,6 +68,13 @@
             android:text="@string/llamar"
             android:id="@+id/button"
             android:onClick="llamarTelefono"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/preferencias"
+            android:id="@+id/btnPreferences"
+            android:onClick="openPreferences"/>
     </LinearLayout>
 
 </RelativeLayout>
