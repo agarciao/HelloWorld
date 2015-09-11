@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_borrar_ctx_mn_lst_destino"
+        android:title="@string/action_borrar"
+        />
+    <item
+        android:id="@+id/action_crear_ctx_mn_lst_destino"
+        android:title="@string/action_crear"
+        />
+
+</menu>

@@ -64,6 +64,16 @@ public class PeliculaAdapter extends BaseAdapter {
         convertView.setTag(helper);
         return convertView;
     }
+
+    public void borrarItem(int position) {
+        this.lista.remove(position);
+        notifyDataSetChanged();
+    }
+
+    public void crearItem(int position) {
+        this.lista.add(position, new Pelicula("PELICULA_NUEVA", "DIRECTOR", "AÑO_NUEVO"));
+        notifyDataSetChanged();
+    }
 }
 
 class VistaViewHelper {

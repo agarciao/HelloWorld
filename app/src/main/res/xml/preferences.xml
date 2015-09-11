@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:id="@+id/preference_update"
+        android:title="@string/update_preference"
+        android:key="@string/update_preference"
+        android:summary="@string/summary_preference"
+        />
+    <EditTextPreference
+        android:id="@+id/preference_name"
+        android:title="@string/name_pref"
+        android:key="@string/name_pref"
+        android:summary="@string/summary_preference"
+        />
+    <ListPreference
+        android:key="@string/preferences_color"
+        android:title="@string/preferences_title"
+        android:entries="@array/color_entries"
+        android:entryValues="@array/color_values"
+        android:dialogTitle="@string/preferences_color"
+        />
+
+</PreferenceScreen>
