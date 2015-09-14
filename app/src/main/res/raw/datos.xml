@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<datos>
+    <pelicula>
+        <titulo>Pelicula1</titulo>
+        <director>Director1</director>
+        <anho>Anho1</anho>
+    </pelicula>
+    <pelicula>
+        <titulo>Pelicula2</titulo>
+        <director>Director2</director>
+        <anho>Anho2</anho>
+    </pelicula>
+</datos>
