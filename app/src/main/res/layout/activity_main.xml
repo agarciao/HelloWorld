@@ -75,6 +75,30 @@
             android:text="@string/preferencias"
             android:id="@+id/btnPreferences"
             android:onClick="openPreferences"/>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/copyfile"
+        android:id="@+id/btn_copyfile"
+        android:onClick="copiarFichero"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/copyfiletosd"
+        android:id="@+id/btn_copyfiletosd"
+        android:onClick="copiarFichero"/>
+</LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/copiardesdexml"
+            android:id="@+id/btn_copyfromxml"
+            android:onClick="parserXml"/>
     </LinearLayout>
 
 </RelativeLayout>

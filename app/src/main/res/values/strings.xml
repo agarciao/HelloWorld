@@ -40,4 +40,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_preferencias">PreferenciasActivity</string>
     <string name="preferencias">Preferencias</string>
+    <string name="copyfile">COPIAR FICHERO</string>
+    <string name="copyfiletosd">Copiar Fichero a SD</string>
+    <string name="copiardesdexml">COPIAR DESDE XML</string>
 </resources>
