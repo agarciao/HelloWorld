@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bdName">PeliculasDB</string>
+    <string name="tablePeliculas">Peliculas</string>
+    <integer name="version">1</integer>
+
+    <string-array name="script_create">
+        <item>CREATE TABLE [Peliculas] (
+[ID] INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
+[Titulo] VARCHAR(50)  NULL,
+[Director] VARCHAR(50)  NULL,
+[Anho] INTEGER  NULL
+)
+        </item>
+    </string-array>
+    <string-array name="script_update_v2">
+
+    </string-array>
+</resources>

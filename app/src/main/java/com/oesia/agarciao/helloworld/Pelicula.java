@@ -8,6 +8,9 @@ public class Pelicula {
     private String anho;
     private String director;
 
+    public Pelicula() {
+    }
+
     public Pelicula(String titulo, String anho, String director) {
         this.titulo = titulo;
         this.anho = anho;
@@ -36,5 +39,14 @@ public class Pelicula {
 
     public void setDirector(String director) {
         this.director = director;
+    }
+
+    @Override
+    public String toString() {
+        return "Pelicula{" +
+                "titulo='" + titulo + '\'' +
+                ", anho='" + anho + '\'' +
+                ", director='" + director + '\'' +
+                '}';
     }
 }

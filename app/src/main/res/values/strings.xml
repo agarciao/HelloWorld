@@ -42,5 +42,6 @@
     <string name="preferencias">Preferencias</string>
     <string name="copyfile">COPIAR FICHERO</string>
     <string name="copyfiletosd">Copiar Fichero a SD</string>
-    <string name="copiardesdexml">COPIAR DESDE XML</string>
+    <string name="copiardesdexmladb">COPIAR DESDE XML A DB</string>
+    <string name="selectdb">SELECT FROM DB</string>
 </resources>

@@ -92,13 +92,25 @@
         android:id="@+id/btn_copyfiletosd"
         android:onClick="copiarFichero"/>
 </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/copiardesdexml"
-            android:id="@+id/btn_copyfromxml"
-            android:onClick="parserXml"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/copiardesdexmladb"
+        android:id="@+id/btn_copyfromxml"
+        android:onClick="parserXml"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selectdb"
+        android:id="@+id/btn_select_db"
+        android:onClick="selectDB"/>
+</LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
