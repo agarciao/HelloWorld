@@ -44,4 +44,5 @@
     <string name="copyfiletosd">Copiar Fichero a SD</string>
     <string name="copiardesdexmladb">COPIAR DESDE XML A DB</string>
     <string name="selectdb">SELECT FROM DB</string>
+    <string name="descargar_imagen">DESCARGAR IMAGEN</string>
 </resources>

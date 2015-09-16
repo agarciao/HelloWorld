@@ -296,4 +296,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return values;
     }
+
+    public void descargarImagen(View view) {
+
+
+    }
 }
