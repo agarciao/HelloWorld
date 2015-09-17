@@ -5,13 +5,16 @@ package com.oesia.agarciao.helloworld;
  */
 public class Pelicula {
     private String titulo;
-    private String anho;
     private String director;
+    private String anho;
 
-    public Pelicula(String titulo, String anho, String director) {
+    public Pelicula() {
+    }
+
+    public Pelicula(String titulo, String director, String anho) {
         this.titulo = titulo;
-        this.anho = anho;
         this.director = director;
+        this.anho = anho;
     }
 
     public String getTitulo() {
@@ -22,6 +25,14 @@ public class Pelicula {
         this.titulo = titulo;
     }
 
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
     public String getAnho() {
         return anho;
     }
@@ -30,11 +41,12 @@ public class Pelicula {
         this.anho = anho;
     }
 
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
+    @Override
+    public String toString() {
+        return "Pelicula{" +
+                "titulo='" + titulo + '\'' +
+                ", director='" + director + '\'' +
+                ", anho='" + anho + '\'' +
+                '}';
     }
 }

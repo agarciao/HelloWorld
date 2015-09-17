@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="111dp"
+        android:layout_height="26dp"
+        android:text="Nombre:"
+        android:id="@+id/tvNombre"
+        android:layout_weight="0.04" />
+
+    <TextView
+        android:layout_width="147dp"
+        android:layout_height="26dp"
+        android:id="@+id/tvDireccion"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.09"
+        android:text="Dirección" />
+
+</LinearLayout>

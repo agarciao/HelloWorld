@@ -1,8 +1,12 @@
 package com.oesia.agarciao.helloworld;
 
 import android.annotation.TargetApi;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -34,12 +38,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = MainActivity.class.getName();
 
     private final static int RESULT_CODE_RESULTADO_1 = 1;
     public final static String DATOS_ENVIADOS = "datos_enviados";
+
+    private PeliculasSQLiteOpenHelper openHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                 saludar(v);
             }
         });
+
+        this.openHelper = new PeliculasSQLiteOpenHelper(this, getString(R.string.bdName), null, getResources().getInteger(R.integer.version));
     }
 
     @Override
@@ -198,27 +208,38 @@ public class MainActivity extends AppCompatActivity {
             parser.setInput(new InputStreamReader(getResources().openRawResource(R.raw.datos)));
 
             int event = parser.getEventType();
-            String pelicula = "";
+            Pelicula pelicula = null;
             while (event != XmlPullParser.END_DOCUMENT) {
                 if (event == XmlPullParser.START_TAG) {
                     String tag = parser.getName();
+                    Log.e("********************", tag);
                     switch (tag) {
                         case "pelicula":
-                            pelicula = "";
+                            pelicula = new Pelicula();
                             break;
                         case "titulo":
-                            pelicula = "" + parser.nextText();
+                            pelicula.setTitulo(parser.nextText());
                             break;
                         case "director":
-                            pelicula = pelicula + "\nTIT: " + parser.nextText();
+                            pelicula.setDirector(parser.nextText());
                             break;
                         case "anho":
-                            pelicula = pelicula + "\nANHO: " + parser.nextText();
+                            pelicula.setAnho(parser.nextText());
                             break;
                     }
                 } else if (event == XmlPullParser.END_TAG) {
+                    Log.e("+++++++", parser.getName());
                     if (parser.getName().equals("pelicula")) {
-                        Toast.makeText(this, pelicula, Toast.LENGTH_LONG).show();
+                        SQLiteDatabase db = this.openHelper.getWritableDatabase();
+                        try {
+                            db.beginTransaction();
+
+                            db.insert("Peliculas", "Titulo", peliculaToContentValues(pelicula));
+                            db.setTransactionSuccessful();
+                        } catch (Exception e) {
+                            db.endTransaction();
+                        }
+                        Toast.makeText(this, "Datos copiados", Toast.LENGTH_LONG).show();
                     }
                 }
                 event = parser.next();
@@ -230,5 +251,62 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void selectDB(View view) {
+        SQLiteDatabase db = this.openHelper.getReadableDatabase();
+        String[] columnas = {"Titulo", "Director", "Anho"};
+        String[] whereArgs = {"Anho2"};
+        Cursor cursor = db.query(getString(R.string.tablePeliculas), columnas, "Anho = ?", whereArgs, null, null, null);
+        List<Pelicula> resultado = cursorToPelicula(cursor);
+        String mensaje = "PELIS: ";
+        for (Pelicula pelicula : resultado) {
+            mensaje += pelicula.getTitulo();
+        }
+
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+    }
+
+    private List<Pelicula> cursorToPelicula(Cursor cursor) {
+        List<Pelicula> lista = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            Pelicula pelicula = new Pelicula();
+            pelicula.setTitulo(cursor.getString(cursor.getColumnIndex("Titulo")));
+            pelicula.setDirector(cursor.getString(cursor.getColumnIndex("Director")));
+            pelicula.setAnho(cursor.getString(cursor.getColumnIndex("Anho")));
+            lista.add(pelicula);
+        }
+        return lista;
+    }
+
+    private ContentValues peliculaToContentValues(Pelicula pelicula) {
+        ContentValues values = new ContentValues();
+        //Para meter un null hay que llamar a put.null.
+        if (pelicula.getTitulo() == null) {
+            values.putNull("Titulo");
+        } else {
+            values.put("Titulo", pelicula.getTitulo());
+        }
+        if (pelicula.getDirector() == null) {
+            values.putNull("Director");
+        } else {
+            values.put("Director", pelicula.getDirector());
+        }
+        if (pelicula.getAnho() == null) {
+            values.putNull("Anho");
+        } else {
+            values.put("Anho", pelicula.getAnho());
+        }
+        return values;
+    }
+
+    public void descargarImagen(View view) {
+        Intent intent = new Intent(this, ImageActivity.class);
+        startActivity(intent);
+    }
+
+    public void fragmentos(View view) {
+        Intent intent = new Intent(this, Fragmento1Activity.class);
+        startActivity(intent);
     }
 }
