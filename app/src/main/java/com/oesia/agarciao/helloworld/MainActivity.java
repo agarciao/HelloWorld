@@ -212,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
             while (event != XmlPullParser.END_DOCUMENT) {
                 if (event == XmlPullParser.START_TAG) {
                     String tag = parser.getName();
+                    Log.e("********************", tag);
                     switch (tag) {
                         case "pelicula":
                             pelicula = new Pelicula();
@@ -227,10 +228,12 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                 } else if (event == XmlPullParser.END_TAG) {
+                    Log.e("+++++++", parser.getName());
                     if (parser.getName().equals("pelicula")) {
                         SQLiteDatabase db = this.openHelper.getWritableDatabase();
                         try {
                             db.beginTransaction();
+
                             db.insert("Peliculas", "Titulo", peliculaToContentValues(pelicula));
                             db.setTransactionSuccessful();
                         } catch (Exception e) {
@@ -298,7 +301,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void descargarImagen(View view) {
+        Intent intent = new Intent(this, ImageActivity.class);
+        startActivity(intent);
+    }
 
-
+    public void fragmentos(View view) {
+        Intent intent = new Intent(this, Fragmento1Activity.class);
+        startActivity(intent);
     }
 }

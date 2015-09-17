@@ -45,4 +45,8 @@
     <string name="copiardesdexmladb">COPIAR DESDE XML A DB</string>
     <string name="selectdb">SELECT FROM DB</string>
     <string name="descargar_imagen">DESCARGAR IMAGEN</string>
+    <string name="title_activity_image">ImageActivity</string>
+    <string name="title_activity_fragmento1">Fragmento1Activity</string>
+    <string name="title_activity_fragmento2">Fragmento2Activity</string>
+    <string name="fragment1">FRAGMENTO 1</string>
 </resources>

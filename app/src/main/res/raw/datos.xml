@@ -10,4 +10,9 @@
         <director>Director2</director>
         <anho>Anho2</anho>
     </pelicula>
+    <pelicula>
+        <titulo>Pelicula3</titulo>
+        <director>Director3</director>
+        <anho>Anho3</anho>
+    </pelicula>
 </datos>

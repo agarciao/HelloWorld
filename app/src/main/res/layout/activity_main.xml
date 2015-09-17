@@ -110,12 +110,24 @@
         android:id="@+id/btn_select_db"
         android:onClick="selectDB"/>
 </LinearLayout>
-        <Button
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/descargar_imagen"
-            android:id="@+id/btn_descargar_img"
-            android:onClick="descargarImagen"/>
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/descargar_imagen"
+                android:id="@+id/btn_descargar_img"
+                android:onClick="descargarImagen"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment1"
+                android:id="@+id/btn_fragmento1"
+                android:onClick="fragmentos"/>
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
